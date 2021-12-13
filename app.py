@@ -2,7 +2,7 @@ from operator import pos
 from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy 
 from datetime import datetime
-
+from os import getenv
 from forms import ContactMeForm, UpdateForm
 from flask_mail import Message, Mail
 
@@ -11,14 +11,17 @@ mail = Mail()
 
 
 app = Flask(__name__)
-
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///electricals.db'
+user = getenv('MYSQL_USER') 
+pwd = getenv('MYSQL_PWD')
+ip= getenv('MYSQL_IP')
+db = getenv('MYSQL_DB')
+app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://"+user+":"+pwd+"@"+ip+"/"+db
+app.config['SECRET_KEY'] = getenv('MYSQL_SK')
 app.config["MAIL_SERVER"] = "smtp.gmail.com"
 app.config["MAIL_PORT"] = 465
 app.config["MAIL_USE_SSL"] = True
 app.config["MAIL_USERNAME"] = 'sheelmorjaria@gmail.com'
 app.config["MAIL_PASSWORD"] = 'pmnkqihytyftmelt'
-app.config['SECRET_KEY'] = 'secret key'
 mail.init_app(app)
 
 db = SQLAlchemy(app)
@@ -30,6 +33,9 @@ class Blogpost(db.Model):
     author = db.Column(db.String(20))
     date_posted = db.Column(db.DateTime)
     content = db.Column(db.Text)
+
+
+
 
 @app.route('/')
 def index():
