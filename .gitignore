@@ -1,0 +1,6 @@
+pyvenv.cfg
+req.txt
+electricals.db
+Scripts
+Include
+Lib/site-packages
