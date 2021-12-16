@@ -7,6 +7,7 @@ from application.mail import mail
 from flask_mail import Message
 
 @app.route('/')
+@app.route('/home')
 def index():
     posts = Blogpost.query.order_by(Blogpost.date_posted.desc()).all()
 
@@ -59,13 +60,13 @@ def contact():
     elif request.method == 'GET':
         return render_template('contact.html', form=form)
 
-@app.route('/add')
+@app.route('/add', methods=['GET'])
 def add():
     return render_template('add.html')
 
 
 
-@app.route('/delete/<int:post_id>', methods=['GET', 'POST'])
+@app.route('/delete/<int:post_id>',methods=['POST', 'GET'])
 def delete(post_id):
     post_to_delete=Blogpost.query.filter_by(id=post_id).first()
     db.session.delete(post_to_delete)

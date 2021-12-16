@@ -1,7 +1,6 @@
 from application.forms import ContactMeForm, UpdateForm
 from flask_mail import  Mail
 from application import app
-
 mail = Mail()
 
 app.config["MAIL_SERVER"] = "smtp.gmail.com"
