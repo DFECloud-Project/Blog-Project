@@ -1,9 +1,9 @@
 from flask import render_template, request, redirect, url_for, flash
 from datetime import datetime
-from application import app, db
-from application.models import Blogpost
-from application.forms import UpdateForm, ContactMeForm
-from application.mail import mail
+from blog import app, electrical
+from blog.models import Blogpost
+from blog.forms import UpdateForm, ContactMeForm
+from blog.mail import mail
 from flask_mail import Message
 
 @app.route('/')
@@ -33,8 +33,8 @@ def update(post_id):
         post.subtitle = form.subtitle.data
         post.author = form.author.data
         post.content = form.content.data
-        db.session.commit()
-        db.session.close()
+        electrical.session.commit()
+        electrical.session.close()
         return redirect(url_for('index', id=post_id))
     elif request.method == 'GET':
         return render_template('update.html', post_id = post_id)
@@ -69,9 +69,9 @@ def add():
 @app.route('/delete/<int:post_id>',methods=['POST', 'GET'])
 def delete(post_id):
     post_to_delete=Blogpost.query.filter_by(id=post_id).first()
-    db.session.delete(post_to_delete)
-    db.session.commit()
-    db.session.close()
+    electrical.session.delete(post_to_delete)
+    electrical.session.commit()
+    electrical.session.close()
 
     return redirect(url_for('index', id=post_id))
 
@@ -87,8 +87,8 @@ def addpost():
 
     post = Blogpost(title=title, subtitle=subtitle, author=author, content=content, date_posted=datetime.now())
 
-    db.session.add(post)
-    db.session.commit()
-    db.session.close()
+    electrical.session.add(post)
+    electrical.session.commit()
+    electrical.session.close()
 
     return redirect(url_for('index'))
