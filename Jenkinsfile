@@ -1,7 +1,7 @@
 pipeline{
         agent any
         stages{
-            stage('build	')
+            stage('build')
             {
                 steps{
                 git branch: 'main', credentialsId: 'sm', url: 'https://github.com/DFECloud-Project/Blog-Project.git'
@@ -14,7 +14,6 @@ pipeline{
                 sudo curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
                 sudo chmod +x /usr/local/bin/docker-compose
                 sudo docker-compose build
-		        sudo docker-compose up'''
                     }
             }
     }
