@@ -1,4 +1,3 @@
-An explanation of my app and how it fulfils the brief:
 This application is a Blog app with CRUD functionality and contact form. I created a docker-compose.yml to setup the services.
 The application runs in a container
 
@@ -21,7 +20,7 @@ pipeline{
             }
     }
 }
-A report on the success and code coverage of your unit tests.
+Unit test: 
 ----------- coverage: platform win32, python 3.9.9-final-0 -----------
 Name                 Stmts   Miss  Cover
 ----------------------------------------
