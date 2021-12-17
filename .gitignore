@@ -5,6 +5,6 @@ reqs.txt
 Scripts
 Include
 Lib/site-packages
-__pycache__
+/__pycache__
 blog/config.cfg
 blog/.coverage
