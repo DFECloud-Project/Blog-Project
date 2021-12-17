@@ -4,6 +4,7 @@ The application runs in a container
 It utilises flask micro framework and a mysql database to store the posts with flask extensions such as flask_mail used
 
 Attempted the following  initial pipeline, it froze my VM perhaps it wasnt powerful enough:
+
 pipeline{
         agent any
         stages{
@@ -20,7 +21,9 @@ pipeline{
             }
     }
 }
+
 Unit test: 
+
 ----------- coverage: platform win32, python 3.9.9-final-0 -----------
 Name                 Stmts   Miss  Cover
 ----------------------------------------
