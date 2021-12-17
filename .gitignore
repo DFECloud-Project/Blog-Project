@@ -5,3 +5,4 @@ reqs.txt
 Scripts
 Include
 Lib/site-packages
+__pycache__
