@@ -1,5 +1,7 @@
 This application is a Blog app with CRUD functionality and contact form. I created a docker-compose.yml to setup the services.
-The application runs in a container
+The application runs in a container.
+
+https://drive.google.com/file/d/12uAXVb_-KuO7Th5RkFJBjoeBI2pcmRHC/view?usp=sharing
 
 It utilises flask micro framework and a mysql database to store the posts with flask extensions such as flask_mail used
 
