@@ -1,0 +1,31 @@
+============================= test session starts =============================
+platform win32 -- Python 3.9.9, pytest-6.2.5, py-1.11.0, pluggy-1.0.0
+rootdir: C:\Users\sheel\Downloads\Blog-Project
+plugins: cov-3.0.0
+collected 5 items
+
+tests\test_blog.py .....                                                 [100%]
+
+============================== warnings summary ===============================
+..\venv\lib\site-packages\flask_sqlalchemy\__init__.py:872
+  C:\Users\sheel\Downloads\venv\lib\site-packages\flask_sqlalchemy\__init__.py:872: FSADeprecationWarning: SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and will be disabled by default in the future.  Set it to True or False to suppress this warning.
+    warnings.warn(FSADeprecationWarning(
+
+-- Docs: https://docs.pytest.org/en/stable/warnings.html
+
+----------- coverage: platform win32, python 3.9.9-final-0 -----------
+Name                 Stmts   Miss  Cover
+----------------------------------------
+blog\__init__.py        14      0   100%
+blog\config.cfg          1      0   100%
+blog\forms.py           15      0   100%
+blog\mail.py            10      0   100%
+blog\models.py          10      0   100%
+blog\routes.py          67     32    52%
+run.py                   3      3     0%
+tests\__init__.py        0      0   100%
+tests\test_blog.py      39      0   100%
+----------------------------------------
+TOTAL                  159     35    78%
+
+======================== 5 passed, 1 warning in 3.32s =========================

@@ -6,3 +6,5 @@ Scripts
 Include
 Lib/site-packages
 __pycache__
+blog/config.cfg
+blog/.coverage

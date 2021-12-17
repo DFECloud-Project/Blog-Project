@@ -4,8 +4,8 @@ from flask import url_for
 
 from datetime import date, datetime
 from os import getenv
-from application import app, db
-from application.models import Blogpost
+from blog import app, electrical
+from blog.models import Blogpost
 from flask_sqlalchemy import SQLAlchemy
 
 
@@ -14,22 +14,23 @@ class TestBase(TestCase):
     def create_app(self):
         user = str(getenv('MYSQL_USER')) 
         pwd = str(getenv('MYSQL_PWD'))
-        ip= str(getenv('MYSQL_IP'))
+        ip= "localhost"
         dbname = str(getenv('MYSQL_DBNAME'))
-        app.config.update(
-            SQLALCHEMY_DATABASE_URI = "mysql+pymysql://"+user+":"+pwd+"@"+ip+"/"+"testdb"
-        )
+        app.config.from_pyfile('config.cfg')
+        
+
+
         return app
 
     def setUp(self):
-        db.create_all()
+        electrical.create_all()
         sample = Blogpost(title='This is an item', subtitle='sample subtitle', author='Sheel', date_posted=date(2021, 1, 1), content ='Content sample')
-        db.session.add(sample)
-        db.session.commit()
+        electrical.session.add(sample)
+        electrical.session.commit()
     
     def tearDown(self):
-        db.session.remove()
-        db.drop_all()
+        electrical.session.remove()
+        electrical.drop_all()
 #routing tests
 class TestViews(TestBase):
     def test_home_get(self):
